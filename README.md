@@ -12,3 +12,6 @@ Use ```docker-compose down``` to stop proxy server.
 
 ## Logs
 You can see squid logs in ```containers_files/squid/log/```
+
+## Test your proxy
+```curl -x http://your_proxy_ip:your_proxy_port --proxy-user test_user:test_password -L https://google.ru```
