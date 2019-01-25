@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:
+  squid:
+    restart: always
+    build:
+      context: .
+      dockerfile: ./.docker_build_configs/squid/Dockerfile
+      args:
+        USERNAME: ${USERNAME}
+        PASSWORD: ${PASSWORD}
+    ports:
+      - ${HTTPS_PROXY_PORT}:3128
+    volumes:
+      - ./.docker_build_configs/squid/squid.conf:/etc/squid/squid.conf:Z
+      - ./containers_files/squid/log:/var/log/squid/:Z
+      - ./containers_files/squid/cache:/var/spool/squid3:Z
